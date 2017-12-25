@@ -23,7 +23,9 @@ test_sources = \
   LightControllerSpyTest.cpp \
   LightControllerSpy.c \
   FakeTimeServiceTest.cpp \
-  FakeTimeService.c
+  FakeTimeService.c \
+  RandomMinuteTest.cpp
 target_sources = \
-  $(top_srcdir)/src/LightScheduler.c
+  $(top_srcdir)/src/LightScheduler.c \
+  $(top_srcdir)/src/RandomMinute.c
 gtest_SOURCES = $(test_sources) $(target_sources)
