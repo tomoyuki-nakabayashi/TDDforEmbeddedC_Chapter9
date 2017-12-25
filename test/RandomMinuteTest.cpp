@@ -37,4 +37,20 @@ namespace random_minute_test{
       AssertMinuteIsInRange();
     }
   }
+
+  TEST_F(RandomMinute, AllValuesPossible)
+  {
+    int hit[2*BOUND + 1];
+    memset(hit, 0, sizeof(hit));
+    for(int i=0; i<400; i++)
+    {
+      minute = RandomMinute_Get();
+      AssertMinuteIsInRange();
+      hit[minute + BOUND]++;
+    }
+    for(int i=0; i<2*BOUND; i++)
+    {
+      EXPECT_GT(hit[i], 0);
+    }
+  }
 } // namespace
