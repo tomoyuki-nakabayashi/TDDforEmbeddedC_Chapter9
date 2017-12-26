@@ -1,2 +1,2 @@
 void RandomMinute_Create(int b);
-int RandomMinute_Get(void);
+extern int (*RandomMinute_Get)(void);
