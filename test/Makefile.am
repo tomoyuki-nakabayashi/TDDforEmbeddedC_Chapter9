@@ -20,11 +20,13 @@ gtest_CPPFLAGS = \
 test_sources = \
   TestMain.cpp \
   LightSchedulerTest.cpp \
+  LightSchedulerRandomizeTest.cpp \
   LightControllerSpyTest.cpp \
   LightControllerSpy.c \
   FakeTimeServiceTest.cpp \
   FakeTimeService.c \
-  RandomMinuteTest.cpp
+  RandomMinuteTest.cpp \
+  FakeRandomMinute.c
 target_sources = \
   $(top_srcdir)/src/LightScheduler.c \
   $(top_srcdir)/src/RandomMinute.c

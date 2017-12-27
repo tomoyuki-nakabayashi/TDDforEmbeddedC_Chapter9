@@ -13,7 +13,7 @@ namespace light_controller_spy_test{
 
     virtual void TearDown()
     {
-      LightController_Destory();
+      LightController_Destroy();
     }
   };
 

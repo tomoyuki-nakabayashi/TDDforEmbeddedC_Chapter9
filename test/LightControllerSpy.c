@@ -13,7 +13,7 @@ void LightController_Create(void)
   memset(lights, LIGHT_STATE_UNKNOWN, sizeof(lights));
 }
 
-void LightController_Destory(void)
+void LightController_Destroy(void)
 {
   lastId = LIGHT_ID_UNKNOWN;
   lastState = LIGHT_STATE_UNKNOWN;

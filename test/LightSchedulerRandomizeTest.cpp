@@ -1,10 +1,10 @@
 #include "gtest/gtest.h"
 extern "C" {
-  #include "RandomMinute.h"
   #include "FakeRandomMinute.h"
   #include "LightScheduler.h"
   #include "LightController.h"
   #include "LightControllerSpy.h"
+  #include "FakeTimeService.h"
 }
 
 namespace random_minute_test{

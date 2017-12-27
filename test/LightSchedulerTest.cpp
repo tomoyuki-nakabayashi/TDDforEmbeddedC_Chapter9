@@ -16,8 +16,8 @@ namespace light_scheduler_test{
     }
     virtual void TearDown()
     {
-      LightController_Destory();
-      LightScheduler_Destory();
+      LightController_Destroy();
+      LightScheduler_Destroy();
     }
   protected:
     void setTimeTo(int day, int minuteOfDay)
@@ -228,13 +228,13 @@ namespace light_scheduler_test{
               (void*)FakeTimeService_GetAlarmCallcack());
 
     EXPECT_EQ(60, FakeTimeService_GetAlarmPeriod());
-    LightScheduler_Destory();
+    LightScheduler_Destroy();
   }
 
   TEST_F(LightSchedulerInitAndCleanup, DestroyCancelsOneMinuteAlarm)
   {
     LightScheduler_Create();
-    LightScheduler_Destory();
+    LightScheduler_Destroy();
     EXPECT_EQ(NULL, (void*)FakeTimeService_GetAlarmCallcack());
   }
 } // namespace

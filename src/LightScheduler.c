@@ -2,6 +2,7 @@
 #include "LightScheduler.h"
 #include "LightController.h"
 #include "TimeService.h"
+#include "RandomMinute.h"
 
 enum
 {
@@ -54,10 +55,23 @@ void LightScheduler_ScheduleRemove(int id, Day day, int minuteOfDay)
   for(int i=0; i<MAX_EVENTS; i++)
   {
     if((id == scheduledEvents[i].id) 
-    && (day = scheduledEvents[i].day) 
+    && (day == scheduledEvents[i].day) 
     && (minuteOfDay == scheduledEvents[i].minuteOfDay))
     {
       scheduledEvents[i].id = UNUSED;
+    }
+  }
+}
+
+void LightScheduler_Randomize(int id, Day day, int minuteOfDay)
+{
+  for(int i=0; i<MAX_EVENTS; i++)
+  {
+    if((id == scheduledEvents[i].id) 
+    && (day == scheduledEvents[i].day) 
+    && (minuteOfDay == scheduledEvents[i].minuteOfDay))
+    {
+      scheduledEvents[i].minuteOfDay += RandomMinute_Get();
     }
   }
 }
@@ -121,7 +135,7 @@ void LightScheduler_Create(void)
   TimeService_SetPeriodicAlarmInSeconds(60, LightScheduler_Wakeup);
 }
 
-void LightScheduler_Destory(void)
+void LightScheduler_Destroy(void)
 {
   TimeService_CancelPeriodicAlarmInSeconds(60, LightScheduler_Wakeup);
 }

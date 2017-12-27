@@ -5,7 +5,7 @@ void LightController_Create()
 {
 }
 
-void LightController_Destory()
+void LightController_Destroy()
 {
 }
 
