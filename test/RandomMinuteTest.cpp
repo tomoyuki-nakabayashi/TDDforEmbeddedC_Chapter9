@@ -23,7 +23,7 @@ namespace random_minute_test{
     {
       if (minute < -BOUND || minute > BOUND)
       {
-        FAIL() << "Minute out of range.";
+        FAIL() << "Minute out of range :" << minute;
       }
     }
 

@@ -7,11 +7,10 @@ extern "C" {
   #include "FakeTimeService.h"
 }
 
-namespace random_minute_test{
-
+namespace light_scheduler_randomize_test{
   enum {BOUND=30};
 
-  class RandomMinute : public ::testing::Test
+  class LightSchedulerRandomize : public ::testing::Test
   {
     virtual void SetUp()
     {
@@ -48,7 +47,7 @@ namespace random_minute_test{
     }
   };
 
-  TEST_F(RandomMinute, TurnsOnEarly)
+  TEST_F(LightSchedulerRandomize, TurnsOnEarly)
   {
     FakeRandomMinute_SetFirstAndIncrement(-10, 5);
     LightScheduler_ScheduleTurnOn(4, EVERYDAY, 600);

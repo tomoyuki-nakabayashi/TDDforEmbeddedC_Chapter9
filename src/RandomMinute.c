@@ -11,7 +11,7 @@ void RandomMinute_Create(int b)
 
 int RandomMinute_GetImpl(void)
 {
-  return bound - rand() % (bound * 2 + 1);
+    return bound - rand() % (bound * 2 + 1);
 }
 
 int (*RandomMinute_Get)(void) = RandomMinute_GetImpl;
