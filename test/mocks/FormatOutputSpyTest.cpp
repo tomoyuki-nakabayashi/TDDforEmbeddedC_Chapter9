@@ -33,4 +33,12 @@ namespace format_output_spy_test {
     FormatOutput("Hello, World\n");
     EXPECT_STREQ("Hell", FormatOutputSpy_GetOutput());
   }
+
+  TEST_F(FormatOutputSpyTest, PrintMultipleTimes)
+  {
+    FormatOutputSpy_Create(25);
+    FormatOutput("Hello");
+    FormatOutput(", World\n");
+    EXPECT_STREQ("Hello, World\n", FormatOutputSpy_GetOutput());
+  }
 }
