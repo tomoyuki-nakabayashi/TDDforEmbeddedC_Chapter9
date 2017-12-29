@@ -26,4 +26,11 @@ namespace format_output_spy_test {
     FormatOutput("Hello, World\n");
     EXPECT_STREQ("Hello, World\n", FormatOutputSpy_GetOutput());
   }
+
+  TEST_F(FormatOutputSpyTest, LimitTheOutputBufferSize)
+  {
+    FormatOutputSpy_Create(4);
+    FormatOutput("Hello, World\n");
+    EXPECT_STREQ("Hell", FormatOutputSpy_GetOutput());
+  }
 }
