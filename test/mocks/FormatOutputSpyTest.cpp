@@ -41,4 +41,13 @@ namespace format_output_spy_test {
     FormatOutput(", World\n");
     EXPECT_STREQ("Hello, World\n", FormatOutputSpy_GetOutput());
   }
+
+  TEST_F(FormatOutputSpyTest, PrintMultipleOutputsPastFull)
+  {
+    FormatOutputSpy_Create(12);
+    FormatOutput("12345");
+    FormatOutput("67890");
+    FormatOutput("ABCDEF");
+    EXPECT_STREQ("1234567890AB", FormatOutputSpy_GetOutput());
+  }
 }
