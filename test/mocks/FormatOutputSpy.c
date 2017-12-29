@@ -1,27 +1,37 @@
 #include "FormatOutputSpy.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
-static char *output = NULL;
+static char *buffer = NULL;
+static int buffer_size = 0;
 
 void FormatOutputSpy_Create(int len)
 {
-  output = malloc(len);
+  buffer_size = len+1;
+  buffer = malloc(buffer_size);
+  memset(buffer, '\0', buffer_size);
 }
 
 void FormatOutputSpy_Destroy(void)
 {
-  free(output);
+  if(buffer == NULL) 
+    return;
+
+  free(buffer);
+  buffer = NULL;
 }
 
 char* FormatOutputSpy_GetOutput(void)
 {
-  return output;
+  return buffer;
 }
 
 int FormatOutputSpy(const char *format, ...)
 {
-  va_list list;
-  va_start(list, fmt);
-  int ret = vprintf(fmt, list);
-  va_end(list);
-  return ret;
+  va_list arguments;
+  va_start(arguments, format);
+  int written_size = vsnprintf(buffer, buffer_size, format, arguments);
+  va_end(arguments);
+  return written_size;
 }

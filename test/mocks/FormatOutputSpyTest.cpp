@@ -1,11 +1,10 @@
 #include "gtest/gtest.h"
 extern "C" {
-  #include "util/Utils.h"
   #include "FormatOutputSpy.h"
 }
 
 namespace format_output_spy_test {
-  class FormatOutputSpy : public ::testing::Test
+  class FormatOutputSpyTest : public ::testing::Test
   {
     virtual void SetUp()
     {
@@ -21,7 +20,7 @@ namespace format_output_spy_test {
       int (*savedFormatOutput)(const char* format, ...);
   };
 
-  TEST_F(FormatOutputSpy, HelloWorld)
+  TEST_F(FormatOutputSpyTest, HelloWorld)
   {
     FormatOutputSpy_Create(20);
     FormatOutput("Hello, World\n");
