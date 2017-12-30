@@ -4,4 +4,6 @@ lightscheduler_SOURCES = \
   LightScheduler.c \
   LightController.c \
   RandomMinute.c \
-  TimeService.c
+  TimeService.c \
+  util/Utils.c \
+  util/CircularBuffer.c

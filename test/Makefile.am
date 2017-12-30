@@ -28,9 +28,11 @@ test_sources = \
   RandomMinuteTest.cpp \
   FakeRandomMinute.c \
   mocks/FormatOutputSpyTest.cpp \
-  mocks/FormatOutputSpy.c
+  mocks/FormatOutputSpy.c \
+  util/CircularBufferPrintTest.cpp
 target_sources = \
   $(top_srcdir)/src/LightScheduler.c \
   $(top_srcdir)/src/RandomMinute.c \
-  $(top_srcdir)/src/util/Utils.c
+  $(top_srcdir)/src/util/Utils.c \
+  $(top_srcdir)/src/util/CircularBuffer.c
 gtest_SOURCES = $(test_sources) $(target_sources)
