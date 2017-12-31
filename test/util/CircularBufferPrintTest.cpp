@@ -51,4 +51,39 @@ namespace circular_buffer_print_test {
     CircularBuffer_Print(buffer);
     EXPECT_STREQ(expectedOutput, actualOutput);
   }
+
+  TEST_F(CircularBufferPrintTest, PrintNotYetWrapperAndIsFull)
+  {
+    const char *expectedOutput = "Circular buffer content:\n<31, 41, 59, 26, 53>\n";
+
+    CircularBuffer b = CircularBuffer_Create(5);
+    CircularBuffer_Put(b, 31);
+    CircularBuffer_Put(b, 41);
+    CircularBuffer_Put(b, 59);
+    CircularBuffer_Put(b, 26);
+    CircularBuffer_Put(b, 53);
+    CircularBuffer_Print(b);
+
+    EXPECT_STREQ(expectedOutput, actualOutput);
+    CircularBuffer_Destroy(b);
+  }
+
+  TEST_F(CircularBufferPrintTest, PrintOldToNewWhenWrappedAndFull)
+  {
+    const char *expectedOutput = "Circular buffer content:\n<201, 202, 203, 204, 999>\n";
+
+    CircularBuffer b = CircularBuffer_Create(5);
+    CircularBuffer_Put(b, 200);
+    CircularBuffer_Put(b, 201);
+    CircularBuffer_Put(b, 202);
+    CircularBuffer_Put(b, 203);
+    CircularBuffer_Put(b, 204);
+    CircularBuffer_Get(b);
+    CircularBuffer_Put(b, 999);
+
+    CircularBuffer_Print(b);
+
+    EXPECT_STREQ(expectedOutput, actualOutput);
+    CircularBuffer_Destroy(b);
+  }
 } // namespace
