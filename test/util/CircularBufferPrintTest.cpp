@@ -33,4 +33,22 @@ namespace circular_buffer_print_test {
     CircularBuffer_Print(buffer);
     EXPECT_STREQ(expectedOutput, actualOutput);
   }
+
+  TEST_F(CircularBufferPrintTest, PrintAfterOneIsPut)
+  {
+    const char *expectedOutput = "Circular buffer content:\n<17>\n";
+    CircularBuffer_Put(buffer, 17);
+    CircularBuffer_Print(buffer);
+    EXPECT_STREQ(expectedOutput, actualOutput);
+  }
+
+  TEST_F(CircularBufferPrintTest, PrintNotYetWrapperOrFull)
+  {
+    const char *expectedOutput = "Circular buffer content:\n<10, 20, 30>\n";
+    CircularBuffer_Put(buffer, 10);
+    CircularBuffer_Put(buffer, 20);
+    CircularBuffer_Put(buffer, 30);
+    CircularBuffer_Print(buffer);
+    EXPECT_STREQ(expectedOutput, actualOutput);
+  }
 } // namespace

@@ -6,5 +6,6 @@ typedef struct CircularBufferStruct * CircularBuffer;
 CircularBuffer CircularBuffer_Create(int capacity);
 void CircularBuffer_Destroy(CircularBuffer);
 void CircularBuffer_Print(CircularBuffer);
+void CircularBuffer_Put(CircularBuffer, int);
 
 #endif //SRC_UTIL_CIRCULAR_BUFFER_H_
